@@ -1,0 +1,1176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+  <link href='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/css/bootstrap.min.css' rel='stylesheet'>
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
+  <style></style>
+  <script type='text/javascript' src=''></script>
+  <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'></script>
+  <script type='text/javascript'
+    src='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js'></script>
+</head>
+<style>
+  :root {
+
+    --primary-color: #000000;
+    --secondary-color: #ffffff;
+  }
+
+  .dark-mode {
+
+    --primary-color: #ffffff;
+    --secondary-color: #000000;
+    transition: 600ms;
+  }
+
+  body {
+    margin: 0px;
+    padding: 0px;
+    font-family: Montserrat;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+    transition: 900ms;
+  }
+
+  .navbar-cst {
+    z-index: 100;
+    padding: 20px;
+    display: flex;
+    position: sticky;
+    top: 0px;
+    width: 100%;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+
+  }
+
+  .nav1,
+  .nav2 {
+    width: 50%;
+
+  }
+
+  .nav2 {
+    display: flex;
+    justify-content: end;
+  }
+
+  #checkbox {
+    display: none;
+  }
+
+  .toggle {
+    position: relative;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition-duration: .5s;
+  }
+
+  .bars {
+    width: 100%;
+    height: 2px;
+    background-color: var(--secondary-color);
+    border-radius: 4px;
+  }
+
+  #bar2 {
+    transition-duration: .8s;
+  }
+
+  #bar1,
+  #bar3 {
+    width: 70%;
+  }
+
+  #checkbox:checked+.toggle .bars {
+    position: absolute;
+    transition-duration: .5s;
+  }
+
+  #checkbox:checked+.toggle #bar2 {
+    transform: scaleX(0);
+    transition-duration: .5s;
+  }
+
+  #checkbox:checked+.toggle #bar1 {
+    width: 100%;
+    transform: rotate(45deg);
+    transition-duration: .5s;
+  }
+
+  #checkbox:checked+.toggle #bar3 {
+    width: 100%;
+    transform: rotate(-45deg);
+    transition-duration: .5s;
+  }
+
+  #checkbox:checked+.toggle {
+    transition-duration: .5s;
+    transform: rotate(180deg);
+  }
+
+  .offcanvas_navbar_main {
+    z-index: 100;
+    position: fixed;
+    width: 100%;
+    background-color: var(--primary-color);
+    display: none;
+    padding: 5%;
+    opacity: 0;
+    transition: 1s ease;
+  }
+
+  .show {
+    display: flex;
+    opacity: 1;
+    transition: 1s ease;
+  }
+
+  .offcanvas_navbar {
+    display: grid;
+    justify-content: center;
+    width: 50%;
+    text-align: center;
+  }
+
+  .nav_link {
+    color: grey;
+    font-size: 30px;
+    text-decoration: none;
+    text-transform: uppercase
+  }
+
+  .nav_link:hover {
+    transition: 400ms ease-in-out;
+    color: rgb(234, 135, 7);
+  }
+
+  .logo_div {
+    width: 50%;
+    display: grid;
+    justify-content: center;
+    color: grey;
+
+
+  }
+
+  .logo {
+    width: 20vw;
+  }
+
+  .logo-navbar {
+    width: 5rem;
+  }
+
+  .pathforanthill {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    color: grey;
+
+  }
+
+  .pathforanthill:hover {
+    cursor: pointer;
+    color: var(--secondary-color);
+    transition: 900ms ease-in-out;
+  }
+
+  .bi-play-fill:hover {
+    transform: rotate(360deg);
+    transition: 900ms ease-in-out;
+  }
+
+  @media only screen and (max-width: 600px) {
+    .offcanvas_navbar {
+      width: 100%;
+    }
+
+    .logo_div {
+      display: none;
+    }
+  }
+</style>
+<style>
+  .heading {
+    text-align: center;
+    font-size: 80px;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 100;
+
+  }
+
+
+  .cta {
+    position: relative;
+    margin: auto;
+
+    padding: 12px 18px;
+    transition: all 0.2s ease;
+    border: none;
+    background: none;
+    cursor: pointer;
+    border: 1.5px solid var(--secondary-color);
+    border-radius: 30px;
+    width: 300px;
+  }
+
+  .cta span {
+    position: relative;
+    font-weight: 200;
+    color: var(--secondary-color);
+  }
+
+  .cta svg {
+    position: relative;
+    top: 0;
+    margin-left: 10px;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke: var(--secondary-color);
+    stroke-width: 2;
+    transform: translateX(-5px);
+    transition: all 0.3s ease;
+  }
+
+  .cta:hover:before {
+    width: 100%;
+    background: var(--secondary-color);
+  }
+
+  .cta:hover svg {
+    transform: translateX(10px);
+  }
+
+  .cta:active {
+    transform: scale(0.95);
+  }
+
+  .hero-image-row {
+    display: flex;
+    margin: 0px;
+    padding: 0px;
+    width: 100vw;
+  }
+
+  .hero-image {
+    width: 30%;
+    height: 45vh;
+    background-size: cover;
+    font-size: 50px;
+    text-align: center;
+    padding: 0px;
+    margin: 0px;
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+
+  .inner-div {
+    height: 100%;
+    width: 100%;
+    background-color: #0000005a;
+    text-align: center;
+    padding-top: 20%;
+    display: flex;
+    justify-content: center;
+  }
+
+  .inner-div:hover {
+    cursor: pointer;
+  }
+
+
+  .hero-image-architecture {
+    background-image: url('./Rectangle\ 1476.png');
+    color: white;
+  }
+
+  .hero-image-interior {
+    background-image: url('./Rectangle\ 1475.png');
+    color: white;
+  }
+
+  .hero-image-construction {
+    background-image: url('./Rectangle\ 1477.png');
+    color: white;
+  }
+
+  .hero-container-div {
+    width: 100%;
+    padding-top: 5%;
+
+  }
+
+  .about-logo {
+    filter: drop-shadow(00px 0px 50px var(--secondary-color));
+  }
+
+  @media only screen and (max-width: 600px) {
+    .heading {
+
+      font-size: 30px;
+
+    }
+
+    .logo {
+      display: none;
+    }
+
+    .show {
+      display: grid;
+
+    }
+
+    .inner-div {
+      display: flex;
+      justify-content: center;
+      font-size: 16px;
+      padding-top: 100%;
+    }
+
+    .hero-container-div {
+      width: 100%;
+      padding-top: 25%;
+
+    }
+  }
+</style>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    var navbarHeight = document.querySelector('.navbar-cst').offsetHeight;
+
+    var offcanvasNavbarMain = document.querySelector('.offcanvas_navbar_main');
+    offcanvasNavbarMain.style.height = 'calc(100vh - ' + navbarHeight + 'px)';
+  });
+</script>
+
+<body>
+  <!-- navabar open -->
+  <div class="navbar-cst">
+    <div class="nav1">
+      <img src="./anthilllogo-white.png" class="logo-navbar" alt="">
+    </div>
+    <div class="nav2">
+
+      <div>
+        <input type="checkbox" id="checkbox" onchange="shownavbar()">
+        <label for="checkbox" class="toggle">
+          <div class="bars" id="bar1"></div>
+          <div class="bars" id="bar2"></div>
+          <div class="bars" id="bar3"></div>
+        </label>
+      </div>
+    </div>
+  </div>
+  <div class="offcanvas_navbar_main " id="offcanvas_navbar_main">
+    <div class="logo_div text-center" style="text-transform: uppercase;color: var(--secondary-color);">
+      <img src="./anthilllogo-white.png" class="logo" alt="">
+      ant hill, <br>
+      kallungal complex, edayapuram road <br>
+      thottumugham aluva- 683101
+      <div class="pathforanthill" onclick="window.location.href ='ant.html';">
+        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" fill="var(--secondary-color)"
+          class="bi bi-play-fill" viewBox="0 0 16 16">
+          <path
+            d="m11.596 8.697-6.363 3.692c-.54.313-1.233-.066-1.233-.697V4.308c0-.63.692-1.01 1.233-.696l6.363 3.692a.802.802 0 0 1 0 1.393" />
+        </svg>
+        create a path for ants
+      </div>
+    </div>
+    <div class="offcanvas_navbar">
+      <div><a id="nav_link" class="nav_link" href="home">Home</a></div>
+      <div><a id="nav_link" class="nav_link" href="about">about</a></div>
+      <div><a id="nav_link" class="nav_link" href="contact">contact</a></div>
+      <div><a id="nav_link" class="nav_link" href="services">services</a></div>
+      <div><a id="nav_link" class="nav_link" href="services">Testimonials</a></div>
+    </div>
+  </div>
+  <!-- darkmode button -->
+  <div style="position: fixed;bottom: 20px;right: 10px;z-index: 101;">
+    <style>
+      .toggle-switch {
+        position: relative;
+        width: 90px;
+        height: 20px;
+        --light: #d8dbe0;
+        --dark: #28292c;
+        --link: rgb(27, 129, 112);
+        --link-hover: rgb(24, 94, 82);
+      }
+
+      .switch-label {
+        position: absolute;
+        width: 100%;
+        height: 30px;
+        background-color: var(--dark);
+        border-radius: 25px;
+        cursor: pointer;
+        border: 3px solid var(--dark);
+      }
+
+      .checkbox2 {
+        position: absolute;
+        display: none;
+      }
+
+      .slider {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 50px;
+        -webkit-transition: 0.3s;
+        transition: 0.3s;
+      }
+
+      .checkbox2:checked~.slider {
+        background-color: var(--light);
+      }
+
+      .slider::before {
+        content: "";
+        position: absolute;
+        top: 3px;
+        left: 10px;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        -webkit-box-shadow: inset 12px -4px 0px 0px var(--light);
+        box-shadow: inset 12px -4px 0px 0px var(--light);
+        background-color: var(--dark);
+        -webkit-transition: 0.3s;
+        transition: 0.3s;
+      }
+
+      .checkbox2:checked~.slider::before {
+        -webkit-transform: translateX(50px);
+        -ms-transform: translateX(50px);
+        transform: translateX(50px);
+        background-color: var(--dark);
+        -webkit-box-shadow: none;
+        box-shadow: none;
+      }
+    </style>
+    <div class="toggle-switch">
+      <label class="switch-label">
+        <input type="checkbox" class="checkbox2" id="dark-check" onclick="changetheme()">
+        <span class="slider"></span>
+      </label>
+    </div>
+    <script>
+      function changetheme() {
+        k = document.getElementById("dark-check");
+        if (k.checked == true) {
+          document.body.classList.toggle("dark-mode");
+        }
+        else {
+          document.body.classList.remove("dark-mode");
+        }
+      }
+    </script>
+  </div>
+  <!-- navabar close -->
+  <!-- hero open -->
+  <div class="container hero-container-div">
+    <div class="col">
+      <h1 class="heading" data-aos="fade-down">Designing <br> Experiences</h1>
+    </div>
+    <div class="row d-flex justify-content-center gap-3">
+      <div class="" style="width: auto;">
+        <button class="cta" data-aos="fade-right">
+          <span>View Portfolio</span>
+          <svg width="15px" height="10px" viewBox="0 0 13 10">
+            <path d="M1,5 L11,5"></path>
+            <polyline points="8 1 12 5 8 9"></polyline>
+          </svg>
+        </button>
+      </div>
+      <div class="" style="width: auto;">
+        <button class="cta" data-aos="fade-left">
+          <span>Contact us</span>
+          <svg width="15px" height="10px" viewBox="0 0 13 10">
+            <path d="M1,5 L11,5"></path>
+            <polyline points="8 1 12 5 8 9"></polyline>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <style>
+    .ani {
+      position: relative;
+      display: inline-block;
+      animation: flip 4s infinite;
+      animation-delay: calc(.2s * var(--i))
+    }
+
+    @keyframes flip {
+
+      0%,
+      80% {
+        transform: rotateY(360deg)
+      }
+    }
+  </style>
+  <div class="row hero-image-row mt-3" style="width: 100%;">
+    <div class="col hero-image hero-image-architecture">
+      <div class="inner-div" data-aos="fade">
+        <span class="ani" style="--i:1">A</span><span class="ani" style="--i:2">r</span><span class="ani"
+          style="--i:3">c</span><span class="ani" style="--i:4">h</span><span class="ani" style="--i:5">i</span><span
+          class="ani" style="--i:6">t</span><span class="ani" style="--i:7">e</span><span class="ani"
+          style="--i:8">c</span><span class="ani" style="--i:9">t</span><span class="ani" style="--i:10">u</span><span
+          class="ani" style="--i:11">r</span><span class="ani" style="--i:12">e</span>
+      </div>
+    </div>
+    <div class="col hero-image hero-image-interior">
+      <div class="inner-div" data-aos="fade">
+        <span class="ani" style="--i:1">I</span><span class="ani" style="--i:2">n</span><span class="ani"
+          style="--i:3">t</span><span class="ani" style="--i:4">e</span><span class="ani" style="--i:5">r</span><span
+          class="ani" style="--i:6">i</span><span class="ani" style="--i:7">o</span><span class="ani"
+          style="--i:8">r</span>
+      </div>
+    </div>
+    <div class="col hero-image hero-image-construction">
+      <div class="inner-div" data-aos="fade">
+        <span class="ani" style="--i:1">C</span><span class="ani" style="--i:2">o</span><span class="ani"
+          style="--i:3">n</span><span class="ani" style="--i:4">s</span><span class="ani" style="--i:5">t</span><span
+          class="ani" style="--i:6">r</span><span class="ani" style="--i:7">u</span><span class="ani"
+          style="--i:8">c</span><span class="ani" style="--i:9">t</span><span class="ani" style="--i:10">i</span><span
+          class="ani" style="--i:11">o</span><span class="ani" style="--i:12">n</span>
+
+      </div>
+    </div>
+  </div>
+  <!-- hero closed -->
+  <!-- video open -->
+  <div style="width: 100%;height:auto;display: flex;justify-content: center;">
+    <video src="./videoplayback.mp4" style="width:100%;height: auto;" autoplay loop muted></video>
+  </div>
+  <h6 data-aos="fade-right"
+    style="text-align: center; font-size: 14px;padding-left: 5%;padding-right: 5%;font-weight: 300;letter-spacing: 2px;padding-top: 2%;">
+    Welcome to Anthill, where
+    creativity seamlessly intertwines with your dreams. At
+    Anthill, we invite you to
+    embark on a journey where innovation meets imagination, crafting an environment that transforms aspirations into
+    stunning realities.</h6>
+  <!-- video closed -->
+  <!-- about open -->
+  <div class="container" style="padding-top: 10%;padding-bottom: 10%;">
+    <div class="row p-2 mt-5">
+      <div class="col" data-aos="fade-right">
+        <h2>
+          Welcome To The Hill
+        </h2>
+        <p style="font-weight: 200;">
+          Anthill stands as the realization of a shared dream, a collaborative venture born from the diverse expertise
+          of
+          a husband-wife duo. With the husband bringing a wealth of knowledge in architecture and the wife contributing
+          her skills in interior design, Anthill seamlessly blends these two distinct worlds into a harmonious entity.
+          Together, they have cultivated a company dedicated to crafting dream interiors, architectural marvels, and
+          construction projects. Anthill is not merely a business but a manifestation of passion and a commitment to
+          transforming spaces into cherished works of art.
+        </p>
+        <button class="cta">
+          <span>Meet our team</span>
+
+          <svg width="15px" height="10px" viewBox="0 0 13 10">
+            <path d="M1,5 L11,5"></path>
+            <polyline points="8 1 12 5 8 9"></polyline>
+          </svg>
+        </button>
+      </div>
+      <div class="col d-flex justify-content-center p-5">
+        <img src="./anthilllogo-white.png" style="width: 15rem;object-fit: contain;" alt="" class="about-logo ">
+      </div>
+    </div>
+  </div>
+  <!-- about close -->
+  <!-- slider start -->
+  <style>
+    .slider-1 {
+      overflow: hidden;
+      width: 100%;
+      height: 50vh;
+      position: relative;
+    }
+
+    .slider-2 {
+      height: 100vh;
+    }
+
+    .slider-1 .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-size: cover;
+      background-position: center;
+      animation: slide 10s infinite;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      color: #fff;
+      font-size: 40px;
+      padding-right: 20%;
+      box-sizing: border-box;
+      transition: ease-in-out;
+    }
+
+    .slider-2 .slide {
+      justify-content: start;
+      padding-right: 0%;
+      padding-left: 5%;
+    }
+
+    .slider-1 .slide:nth-child(1) {
+      background-image: url("https://images.unsplash.com/photo-1595356700395-6f14b5c1f33f?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80");
+      animation-delay: 0;
+    }
+
+    .slider-1 .slide:nth-child(2) {
+      background-image: url("https://images.unsplash.com/photo-1591019052241-e4d95a5dc3fc?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80");
+      animation-delay: -2s;
+    }
+
+    .slider-1 .slide:nth-child(3) {
+      background-image: url("https://images.unsplash.com/photo-1543373014-cfe4f4bc1cdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80");
+      animation-delay: -4s;
+    }
+
+    .slider-1 .slide:nth-child(4) {
+      background-image: url("https://images.unsplash.com/photo-1517430554953-a5ba4678fe85?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80");
+      animation-delay: -6s;
+    }
+
+    .slider-1 .slide:nth-child(5) {
+      background-image: url("https://images.unsplash.com/photo-1583161178154-c362b3459d29?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1000&q=80");
+      animation-delay: -8s;
+    }
+
+    @keyframes slide {
+
+      0%,
+      15%,
+      100% {
+        transform: translateX(0);
+        animation-timing-function: ease;
+      }
+
+      20% {
+        transform: translateX(-100%);
+        animation-timing-function: step-end;
+      }
+
+      95% {
+        transform: translateX(100%);
+        animation-timing-function: ease;
+      }
+    }
+  </style>
+
+  <div class="slider-1">
+    <div class="slide">
+      <div class="text">Designs that redefine your living</div>
+    </div>
+    <div class="slide">
+      <div class="text"></div>
+    </div>
+    <div class="slide">
+      <div class="text">Your Text 3</div>
+    </div>
+    <div class="slide">
+      <div class="text">Your Text 4</div>
+    </div>
+    <div class="slide">
+      <div class="text">Your Text 5</div>
+    </div>
+  </div>
+  <!-- slider close -->
+  <!-- mission open -->
+  <div class="container" style="padding-top: 10%;padding-bottom: 10%;" data-aos="fade-down">
+    <h3 class="text-center">Our Mission</h3>
+    <p class="text-center" style="font-weight: 200;">
+      Anthill strives to provide value-added services to our customers by creating a successful partnership with them
+      throughout the process. Our pledge is to establish lasting relationships with our customers by exceeding their
+      expectations and gaining their trust through exceptional performance by each and every member of the team.
+    </p>
+  </div>
+  <!-- mission close -->
+  <!-- banner open-->
+  <div
+    style="background-image: url('./Rectangle\ 3461.png');width: 100%;background-size: cover;height: auto;display: flex;justify-content: center;padding: 10%;">
+    <img src="./anthilllogo-white.png" alt="" style="width: 15rem;">
+  </div>
+  <!-- banner close-->
+  <!-- services open-->
+  <div class="container" style="padding-top: 20vh;padding-bottom: 20vh;">
+    <div class="row" data-aos="fade-up">
+      <div class="col p-3">
+        <h3>Services</h3>
+        <img src="./anthilllogo-white.png" style="width: 10rem;" alt="">
+      </div>
+      <div class="col p-3">
+        <h5>Architecture</h5>
+        <p style="font-weight: 200;height: 120px;">Elevate your living experience with our bespoke architecture
+          services. From
+          visionary designs to execution, we trans-
+          form spaces into expressions of elegance</p>
+        <button class="cta" style="width: 200px;">
+          <span>Know More</span>
+
+          <svg width="15px" height="10px" viewBox="0 0 13 10">
+            <path d="M1,5 L11,5"></path>
+            <polyline points="8 1 12 5 8 9"></polyline>
+          </svg>
+        </button>
+      </div>
+      <div class="col p-3">
+        <h5>Interior</h5>
+        <p style="font-weight: 200;height: 120px;">Your commitment is to craft interiors that resonate with your
+          individuality,
+          creating a haven where every detail tells a story of sophistication and comfort.</p>
+        <button class="cta" style="width: 200px;">
+          <span>Know More</span>
+
+          <svg width="15px" height="10px" viewBox="0 0 13 10">
+            <path d="M1,5 L11,5"></path>
+            <polyline points="8 1 12 5 8 9"></polyline>
+          </svg>
+        </button>
+      </div>
+
+      <div class="col p-3">
+        <h5>Construction</h5>
+        <p style="font-weight: 200;height: 120px;">From groundbreaking to the finishing touches, we are dedicated to
+          delivering
+          projects that stand as testaments to quality, innovation, and precision.</p>
+        <button class="cta" style="width: 200px;">
+          <span>Know More</span>
+
+          <svg width="15px" height="10px" viewBox="0 0 13 10">
+            <path d="M1,5 L11,5"></path>
+            <polyline points="8 1 12 5 8 9"></polyline>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+  <!-- services close-->
+  <!-- portfolio open -->
+  <div class="slider-1 slider-2">
+    <div class="slide">
+      <div class="text">Our Proud Projects</div>
+    </div>
+    <div class="slide">
+      <div class="text">Our Proud Projects</div>
+    </div>
+    <div class="slide">
+      <div class="text">Our Proud Projects</div>
+    </div>
+    <div class="slide">
+      <div class="text">Our Proud Projects</div>
+    </div>
+    <div class="slide">
+      <div class="text">Our Proud Projects</div>
+    </div>
+  </div>
+  <!-- portfolio close -->
+  <!-- testimonial open -->
+  <style>
+    .testi-heading {
+      text-align: center;
+    }
+
+    .card {
+      background-color: #2c2c2c;
+      color: white;
+      border-radius: 20px;
+      font-size: 11px;
+      height: auto;
+    }
+
+    .card:hover {
+      scale: 1.05;
+      transition: 900ms ease-in-out;
+      background-color: #343434;
+    }
+
+    .client-image {
+      border-radius: 50%;
+      width: 30px;
+      height: 30px;
+      object-fit: cover;
+    }
+  </style>
+  <section class="pt-5 pb-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <h3 class="mb-3 testi-heading">They Fell in Love </h3>
+        </div>
+        <div class="col-12 text-right">
+          <a class="btn btn-dark mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
+            <i class="fa fa-arrow-left"></i>
+          </a>
+          <a class="btn btn-dark mb-3 " href="#carouselExampleIndicators2" role="button" data-slide="next">
+            <i class="fa fa-arrow-right"></i>
+          </a>
+        </div>
+        <div class="col-12 ">
+          <div id="carouselExampleIndicators2" class="carousel slide " data-ride="carousel">
+            <div class="carousel-inner p-5">
+              <div class="carousel-item active">
+                <div class="row">
+
+                  <div class="col-md-3 mb-3">
+                    <div class="card">
+                      <div class="card-body">
+
+                        <p class="card-text"> The work was so good. My family is so happy.The work was so good. My
+                          family is so happy.The work was so
+                          good.
+                          My family is so happy.</p>
+                        <div class="row">
+                          <div class="col-1"><img src="./Rectangle 3461.png" alt="" class="client-image"></div>
+                          <div class="col" style="margin-left: 20px;">Mr. Mohammed Yazin</div>
+                        </div>
+
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div class="col-md-3 mb-3">
+                    <div class="card">
+                      <div class="card-body">
+
+                        <p class="card-text"> The work was so good. My family is so happy.The work was so good. My
+                          family is so happy.The work was so
+                          good.
+                          My family is so happy.</p>
+                        <div class="row">
+                          <div class="col-1"><img src="./Rectangle 3461.png" alt="" class="client-image"></div>
+                          <div class="col" style="margin-left: 20px;">Mr. Mohammed Yazin</div>
+                        </div>
+
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <div class="card">
+                      <div class="card-body">
+
+                        <p class="card-text"> The work was so good. My family is so happy.The work was so good. My
+                          family is so happy.The work was so
+                          good.
+                          My family is so happy.</p>
+                        <div class="row">
+                          <div class="col-1"><img src="./Rectangle 3461.png" alt="" class="client-image"></div>
+                          <div class="col" style="margin-left: 20px;">Mr. Mohammed Yazin</div>
+                        </div>
+
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <div class="card">
+                      <div class="card-body">
+
+                        <p class="card-text"> The work was so good. My family is so happy.The work was so good. My
+                          family is so happy.The work was so
+                          good.
+                          My family is so happy.</p>
+                        <div class="row">
+                          <div class="col-1"><img src="./Rectangle 3461.png" alt="" class="client-image"></div>
+                          <div class="col" style="margin-left: 20px;">Mr. Mohammed Yazin</div>
+                        </div>
+
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="carousel-item ">
+                <div class="row">
+
+                  <div class="col-md-3 mb-3">
+                    <div class="card">
+                      <div class="card-body">
+
+                        <p class="card-text"> The work was so good. My family is so happy.The work was so good. My
+                          family is so happy.The work was so
+                          good.
+                          My family is so happy.</p>
+                        <div class="row">
+                          <div class="col-1"><img src="./Rectangle 3461.png" alt="" class="client-image"></div>
+                          <div class="col" style="margin-left: 20px;">Mr. Mohammed Yazin</div>
+                        </div>
+
+                      </div>
+
+                    </div>
+                  </div>
+
+                  <div class="col-md-3 mb-3">
+                    <div class="card">
+                      <div class="card-body">
+
+                        <p class="card-text"> The work was so good. My family is so happy.The work was so good. My
+                          family is so happy.The work was so
+                          good.
+                          My family is so happy.</p>
+                        <div class="row">
+                          <div class="col-1"><img src="./Rectangle 3461.png" alt="" class="client-image"></div>
+                          <div class="col" style="margin-left: 20px;">Mr. Mohammed Yazin</div>
+                        </div>
+
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <div class="card">
+                      <div class="card-body">
+
+                        <p class="card-text"> The work was so good. My family is so happy.The work was so good. My
+                          family is so happy.The work was so
+                          good.
+                          My family is so happy.</p>
+                        <div class="row">
+                          <div class="col-1"><img src="./Rectangle 3461.png" alt="" class="client-image"></div>
+                          <div class="col" style="margin-left: 20px;">Mr. Mohammed Yazin</div>
+                        </div>
+
+                      </div>
+
+                    </div>
+                  </div>
+                  <div class="col-md-3 mb-3">
+                    <div class="card">
+                      <div class="card-body">
+
+                        <p class="card-text"> The work was so good. My family is so happy.The work was so good. My
+                          family is so happy.The work was so
+                          good.
+                          My family is so happy.</p>
+                        <div class="row">
+                          <div class="col-1"><img src="./Rectangle 3461.png" alt="" class="client-image"></div>
+                          <div class="col" style="margin-left: 20px;">Mr. Mohammed Yazin</div>
+                        </div>
+
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- testimonial close -->
+  <!-- footer  -->
+  <style>
+    footer {
+      background-image: url('./image\ 14.png');
+      background-color: black;
+      background-size: cover;
+      padding-top: 10%;
+      padding-bottom: 10%;
+      width: 100%;
+      border-radius: 20px 20px 0px 0px;
+      border-top: 2px solid grey;
+      color: white;
+    }
+
+    .chat-left {
+      border: 2px solid rgb(204, 204, 204);
+      background-color: rgb(48, 48, 48);
+      color: white;
+      width: 200px;
+      border-radius: 20px 20px 20px 0px;
+    }
+
+    .chat-right {
+      border: 2px solid rgb(204, 204, 204);
+      background-color: rgb(103, 103, 103);
+      color: white;
+      width: 200px;
+      border-radius: 20px 20px 0px 20px;
+    }
+
+    .footer-bottom {
+      border-top: 2px solid grey;
+    }
+
+    .footer-link {
+      color: grey;
+      text-decoration: none;
+      font-size: 11px;
+      margin-top: 10px;
+    }
+
+    .footer-link:hover {
+      color: white;
+    }
+
+    .cta-footer {
+      position: relative;
+      margin: auto;
+
+      padding: 12px 18px;
+      transition: all 0.2s ease;
+      border: none;
+      background: none;
+      cursor: pointer;
+      border: 1.5px solid white;
+      border-radius: 30px;
+      width: 300px;
+    }
+    .cta-footer span {
+    position: relative;
+    font-weight: 200;
+    color: white;
+  }
+
+  .cta-footer svg {
+    position: relative;
+    top: 0;
+    margin-left: 10px;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke: white;
+    stroke-width: 2;
+    transform: translateX(-5px);
+    transition: all 0.3s ease;
+  }
+
+  .cta-footer:hover:before {
+    width: 100%;
+    background: white;
+  }
+
+  .cta-footer:hover svg {
+    transform: translateX(10px);
+  }
+
+  .cta-footer:active {
+    transform: scale(0.95);
+  }
+
+  </style>
+  <footer>
+    <div class="container">
+      <div class="row p-5 mt-2">
+        <div class="col-12 col-md-5 col-lg-5">
+          <div class="row d-flex justify-content-center">
+            <div class="col-12 col-md-7 col-lg-7">
+              <div class="row pt-2  ">
+                <div class="col-3 col-md-3 col-lg-3"><img src="./Rectangle 3461.png" alt=""
+                    style="width: 50px;height: 50px;border-radius: 50%;object-fit: cover;"></div>
+                <div class="col-6 p-2 chat-left">It's Interesting</div>
+              </div>
+              <div class="row pt-2  ">
+                <div class="col-6 p-2 chat-right">Look's Nice</div>
+                <div class="col-3 col-md-3 col-lg-3"><img src="./Rectangle 3461.png" alt=""
+                  style="width: 50px;height: 50px;border-radius: 50%;object-fit: cover;"></div>
+              </div>
+              <div class="row pt-2  ">
+                <div class="col-3 col-md-3 col-lg-3"><img src="./Rectangle 3461.png" alt=""
+                    style="width: 50px;height: 50px;border-radius: 50%;object-fit: cover;"></div>
+                <div class="col-6 p-2 chat-left">I wanna try too!</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-md-6 col-lg-6" style="font-weight: 200;display: flex;justify-content: center;">
+          <div>
+            <h1>Get a Quote Now </h1>
+            be the first one to get a quote today <br>
+            <button class="cta cta-footer mt-2" style="width: 250px;">
+              <span>Give Me a Quotation</span>
+
+              <svg width="15px" height="10px" viewBox="0 0 13 10">
+                <path d="M1,5 L11,5"></path>
+                <polyline points="8 1 12 5 8 9"></polyline>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="row footer-bottom d-flex justify-content-center gap-3">
+        <div class="col"><a class=" footer-link" href="">Home</a></div>
+        <div class="col"><a class=" footer-link" href="">About</a></div>
+        <div class="col"><a class=" footer-link" href="">Contact</a></div>
+        <div class="col"><a class=" footer-link" href="">Services</a></div>
+        <div class="col"><a class=" footer-link" href="">Copyright@grandmark.it</a></div>
+        <div class="col"><a class=" footer-link" href="">instagram</a></div>
+        <div class="col"><a class=" footer-link" href="">facebook</a></div>
+        <div class="col"><a class=" footer-link" href="">whatsapp</a></div>
+        <div class="col"><a class=" footer-link" href="">twitter</a></div>
+      </div>
+    </div>
+
+  </footer>
+  <!-- footer close -->
+  <script src="./aos.js"></script>
+  <script>
+    AOS.init({
+      disable: false,
+      startEvent: 'DOMContentLoaded',
+      initClassName: 'aos-init',
+      animatedClassName: 'aos-animate',
+      useClassNames: false,
+      disableMutationObserver: false,
+      debounceDelay: 50,
+      throttleDelay: 99,
+      offset: 120,
+      delay: 10,
+      duration: 1000,
+      easing: 'ease',
+      once: false,
+      mirror: false,
+      anchorPlacement: 'top-bottom',
+    });
+    AOS.init();
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+    crossorigin="anonymous"></script>
+  <script>
+    function shownavbar() {
+      checkbox = document.getElementById("checkbox");
+      nav = document.getElementById("offcanvas_navbar_main");
+      nav.classList.toggle("show");
+    }
+  </script>
+
+</body>
+
+</html>
